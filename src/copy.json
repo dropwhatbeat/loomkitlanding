@@ -1,0 +1,187 @@
+{
+  "meta": {
+    "title": "LoomKit — Your brain's backup. Lives in Telegram.",
+    "description": "LoomKit — your personal life assistant bot on Telegram. Log expenses, calories, and reminders in plain English. No app. No friction. Just type.",
+    "ogTitle": "LoomKit — Your brain's backup. Lives in Telegram.",
+    "ogDescription": "Log expenses, calories, and reminders in plain English. No app. No friction. Just type."
+  },
+
+  "nav": {
+    "links": [
+      { "label": "How it works", "href": "#how" },
+      { "label": "Feedback", "href": "#feedback" }
+    ],
+    "cta": "Open in Telegram"
+  },
+
+  "hero": {
+    "eyebrow": "Live on Telegram · @Loomkit_bot",
+    "headlinePart1": "Your brain's backup",
+    "headlinePart2": "Lives in Telegram.",
+    "sub": "Tell LoomKit what you ate, what you spent, what you need to remember. One plain-English sentence — it parses everything in parallel, weighs it against your goals, and replies.",
+    "ctaPrimary": "Open @Loomkit_bot",
+    "ctaSecondary": "See how it works",
+    "betaBadge": "Private beta",
+    "betaHint": "Request access to get whitelisted.",
+    "demoStep1Label": "You type",
+    "demoStep2Label": "LoomKit extracts · in parallel",
+    "demoMessage": "I ate chicken rice for dinner, $7",
+    "demoTime": "19:42",
+    "demoReply": "Logged. <strong>1,340/1,800 kcal</strong> today, <strong>$335/$800</strong> in May. On track — go easy on tomorrow's lunch.",
+    "demoReplySentTime": "sent · 19:42",
+    "metaItems": [
+      { "label": "Status", "value": "Online", "live": true },
+      { "label": "Inputs per message", "value": "1" },
+      { "label": "Things tracked", "value": "3 + goals" },
+      { "label": "Time to log", "value": "< 3 sec" }
+    ]
+  },
+
+  "chatDemo": {
+    "eyebrow": "How it works",
+    "headlineLine1": "No forms. No app.",
+    "headlineLine2": "Just type.",
+    "body": "LoomKit reads what you actually say — currency, calories, time, intent. Three seconds, one message, done. That's the whole workflow.",
+    "tagline": "// that's it. seriously.",
+    "messages": [
+      { "user": "Spent $18 on lunch", "bot": "$18 logged under Food" },
+      { "user": "Had a chicken salad, about 450 cals", "bot": "450 kcal · 1,340/1,800 today" },
+      { "user": "Remind me to call mum in 2 hours", "bot": "Reminder set for 4:30 PM" }
+    ]
+  },
+
+  "features": {
+    "eyebrow": "Features",
+    "headline": "Everything you track. One place you already live.",
+    "lede": "Three things, done well. No social feed. No streaks shouting at you. No notifications you didn't ask for.",
+    "items": [
+      {
+        "glyph": "$",
+        "title": "Expense logging",
+        "body": "Just say what you spent. LoomKit categorises, converts currency, and logs it instantly.",
+        "userMsg": "¥3,200 ramen w/ alex",
+        "botMsg": "¥3,200 → $21.40 · Food"
+      },
+      {
+        "glyph": "◐",
+        "title": "Calorie tracking",
+        "body": "Text a meal or snap a photo. No manual entry, no database search, no counting.",
+        "userMsg": "chicken wrap and a flat white",
+        "botMsg": "620 kcal · 38g protein"
+      },
+      {
+        "glyph": "◷",
+        "title": "Smart reminders",
+        "body": "\"In 2 hours\", \"tomorrow morning\", \"next Friday\" — LoomKit speaks human, not cron.",
+        "userMsg": "ping me tmrw 9am re: rent",
+        "botMsg": "set for tue, may 18 · 09:00"
+      }
+    ]
+  },
+
+  "goals": {
+    "eyebrow": "Goals",
+    "headline": "Goals that LoomKit watches for you.",
+    "lede": "Set a daily calorie target and a monthly budget. Every log gets weighed against them — quietly, in the same chat. No dashboard to remember to open.",
+    "cardLabel": "Your goals · May 2026",
+    "cardStatus": "On track",
+    "goalCaloriesName": "Daily calories",
+    "goalBudgetName": "Monthly budget",
+    "tipLabel": "Set in chat",
+    "tip": "Try <code>/goals</code> or just say <em>\"track 1,800 cal a day\"</em>. Change anytime — same way.",
+    "messages": [
+      { "user": "Spent $42 on dinner with mum", "bot": "$42 · Food · $377/$800 this month. Comfortably under." },
+      { "user": "had pho, ~700 kcal", "bot": "700 kcal · 2,040/1,800 today. Over by 240 — plan a lighter morning?" },
+      { "user": "how am I doing this month?", "bot": "$377/$800 spent · 47% in. Tracking better than April." }
+    ]
+  },
+
+  "whyTelegram": {
+    "eyebrow": "Why Telegram",
+    "headline": "The best app is the one you already have open.",
+    "points": [
+      "No download. No onboarding. No new password.",
+      "Telegram is already open. LoomKit lives there.",
+      "One message. Done. Back to your life."
+    ],
+    "themLabel": "Other tracking apps",
+    "themSteps": ["Download", "Sign up", "Verify email", "Pick a plan", "Onboard", "log thing"],
+    "themTime": "~ 8 minutes · 4 screens · 1 abandoned cart",
+    "usLabel": "LoomKit",
+    "usMessage": "spent $18 on lunch",
+    "usTime": "~ 3 seconds · 1 message · 0 screens"
+  },
+
+  "comingSoon": {
+    "eyebrow": "Roadmap",
+    "headline": "What's coming to the kit.",
+    "lede": "The MVP earns its place. These build on top of it — same chat, more superpowers.",
+    "photoBadge": "Coming soon · 05",
+    "photoHeadline1": "You're already taking the photo.",
+    "photoHeadline2": "Just forward it.",
+    "photoBody": "You snap dinner with friends anyway. Forward that same photo to LoomKit — it reads the meal, estimates calories, logs the spend. Zero new behavior required.",
+    "photoGroupLabel": "Group chat",
+    "photoGroupCaption": "dinner looks incredible 🔥",
+    "photoForwardLabel": "forward to @Loomkit_bot",
+    "photoLoomkitLabel": "@Loomkit_bot",
+    "photoForwardedTag": "Forwarded",
+    "photoBotReply": "Beef ramen · ~720 kcal · 35g protein · $18 · Food",
+    "photoBadgeSoon": "Soon",
+    "items": [
+      {
+        "num": "06 / Voice",
+        "glyph": "◔",
+        "title": "Voice logging",
+        "body": "Talk faster than you type. Voice memo in, structured log out. Built for the morning rush."
+      },
+      {
+        "num": "07 / Weekly recap",
+        "glyph": "▦",
+        "title": "Sunday recap",
+        "body": "Every Sunday, a short woven report — calories logged, top spend categories, your week vs your goals. Delivered in chat. No tabs."
+      },
+      {
+        "num": "08 / Dashboard",
+        "glyph": "◱",
+        "title": "Dashboard",
+        "body": "Your data, visualised. A web view for the weeks you want to look at the numbers."
+      }
+    ]
+  },
+
+  "feedback": {
+    "eyebrow": "Feedback",
+    "headline": "Got thoughts? We actually read these.",
+    "lede": "Bug, feature wish, half-baked idea, kind word — all welcome. We reply from a real keyboard.",
+    "messagePlaceholder": "What's on your mind? Be as informal as you like — we are.",
+    "emailLabel": "Email",
+    "emailOptional": "(optional — only if you want a reply)",
+    "emailPlaceholder": "you@somewhere.cool",
+    "hint": "We read every one. Promise.",
+    "submit": "Send it",
+    "success": "Got it. Thanks — we'll write back if you left an email."
+  },
+
+  "footer": {
+    "tagline1": "Built with love and too much caffeine.",
+    "tagline2": "Always in your pocket. Never in your face.",
+    "copyright": "© 2026 LOOMKIT · ALL RIGHTS RESERVED",
+    "version": "V0.1 · STILL WRITING THE THREADS"
+  },
+
+  "modal": {
+    "eyebrow": "Private Beta",
+    "headline": "You'll need a whitelist.",
+    "sub": "LoomKit is in closed beta. Drop your Telegram handle and we'll add you within 48 hours.",
+    "handleLabel": "Telegram handle",
+    "handlePlaceholder": "username",
+    "reasonLabel": "What do you want to track?",
+    "reasonOptional": "(optional)",
+    "reasonPlaceholder": "expenses, calories, reminders, anything!",
+    "submit": "Add me to the list",
+    "footerParts": ["No spam.", "No emails.", "We ping you on Telegram."],
+    "successTitle": "You're on the list.",
+    "successBodyHtml": "We'll ping <strong>@<span id=\"handleEcho\">yourname</span></strong> on Telegram within 48 hours. Look out for a message from <strong>@Loomkit_bot</strong>.",
+    "successClose": "Got it"
+  }
+}
