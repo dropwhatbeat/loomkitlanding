@@ -99,6 +99,7 @@
       if (response.ok) {
         successEl?.classList.add('show');
         form.reset();
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = 'Send it <span class="arrow">→</span>'; }
       } else {
         if (submitBtn) {
           submitBtn.disabled = false;

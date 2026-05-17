@@ -118,6 +118,8 @@ import Footer from '../components/Footer.astro';
         const openModal = () => {
           modalCard?.classList.remove('success');
           (document.getElementById('whitelistForm') as HTMLFormElement)?.reset();
+          const submitBtn = document.querySelector('.modal-submit') as HTMLButtonElement | null;
+          if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = 'Add me to the list <span class="arrow">→</span>'; }
           modal?.classList.add('open');
           modal?.setAttribute('aria-hidden', 'false');
           document.body.style.overflow = 'hidden';
