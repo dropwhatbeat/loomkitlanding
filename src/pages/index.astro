@@ -66,12 +66,12 @@ import Footer from '../components/Footer.astro';
             <label for="handle">Telegram handle</label>
             <div class="input-prefix">
               <span class="prefix-glyph">@</span>
-              <input id="handle" type="text" placeholder="yourname" required pattern="[A-Za-z0-9_]{3,32}" minlength="3" maxlength="32" autocomplete="off" />
+              <input id="handle" type="text" placeholder="username" required pattern="[A-Za-z0-9_]{3,32}" minlength="3" maxlength="32" autocomplete="off" />
             </div>
           </div>
           <div class="field">
             <label for="reason">What do you want to track? <span class="opt">(optional)</span></label>
-            <input id="reason" class="input" type="text" placeholder="calories, food spend, anything…" maxlength="80" />
+            <input id="reason" class="input" type="text" placeholder="expenses, calories, reminders, anything!" maxlength="80" />
           </div>
           <button class="btn btn-primary modal-submit" type="submit">
             Add me to the list
@@ -144,10 +144,23 @@ import Footer from '../components/Footer.astro';
           });
         });
 
-        // submit → success state
-        document.getElementById('whitelistForm')?.addEventListener('submit', (e) => {
+        // submit → API → success state
+        document.getElementById('whitelistForm')?.addEventListener('submit', async (e) => {
           e.preventDefault();
           const handle = handleInput?.value.replace(/^@/, '').trim() || '';
+          const reason = (document.getElementById('reason') as HTMLInputElement)?.value.trim();
+          const submitBtn = document.querySelector('.modal-submit') as HTMLButtonElement | null;
+
+          if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
+
+          try {
+            await fetch('/api/waitlist', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ telegram: handle, reason }),
+            });
+          } catch { /* show success regardless — don't block UX on network errors */ }
+
           const echo = document.getElementById('handleEcho');
           if (echo) echo.textContent = handle || 'yourname';
           modalCard?.classList.add('success');
