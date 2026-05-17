@@ -22,7 +22,23 @@
       </div>
       <div class="hero-beta-hint">
         <span class="badge"><span class="dot"></span> Private beta</span>
-        <span>We whitelist by hand — usually within 48h.</span>
+        <span>Get emailed when you're whitelisted.</span>
+      </div>
+      <form class="hero-waitlist" id="waitlistForm" novalidate>
+        <input
+          type="email"
+          name="email"
+          class="waitlist-input"
+          placeholder="you@email.com"
+          required
+          autocomplete="email"
+        />
+        <button type="submit" class="btn btn-primary waitlist-btn" id="waitlist-btn">
+          Request access <span class="arrow">→</span>
+        </button>
+      </form>
+      <div class="waitlist-success" id="waitlist-success">
+        <span>✓</span> You're on the list — we'll email when you're whitelisted.
       </div>
     </div>
 
@@ -515,4 +531,81 @@
     box-shadow: 0 0 0 0 rgba(22,163,74,0.4);
     animation: pulseDot 1.8s ease-in-out infinite;
   }
+
+  /* ── Waitlist form ── */
+  .hero-waitlist {
+    margin-top: 14px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    max-width: 420px;
+  }
+  .waitlist-input {
+    flex: 1;
+    min-width: 180px;
+    height: 44px;
+    padding: 0 14px;
+    border: 1px solid var(--hair-2);
+    border-radius: var(--r-md);
+    background: var(--paper-2);
+    color: var(--ink);
+    font-size: 14px;
+    outline: none;
+    transition: border-color .15s;
+  }
+  .waitlist-input::placeholder { color: var(--muted-2); }
+  .waitlist-input:focus { border-color: var(--ink); }
+  .waitlist-btn { height: 44px; font-size: 14px; white-space: nowrap; }
+  .waitlist-success {
+    display: none;
+    margin-top: 10px;
+    font-size: 13px;
+    color: #14803a;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.02em;
+    gap: 6px;
+    align-items: center;
+  }
+  .waitlist-success.show { display: flex; }
 </style>
+
+<script>
+  const waitlistForm = document.getElementById('waitlistForm') as HTMLFormElement | null;
+  const waitlistSuccess = document.getElementById('waitlist-success');
+  const waitlistBtn = document.getElementById('waitlist-btn') as HTMLButtonElement | null;
+
+  waitlistForm?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (waitlistBtn) {
+      waitlistBtn.disabled = true;
+      waitlistBtn.textContent = 'Sending…';
+    }
+
+    const email = (waitlistForm.elements.namedItem('email') as HTMLInputElement)?.value;
+
+    try {
+      const res = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+
+      if (res.ok) {
+        waitlistForm.style.display = 'none';
+        waitlistSuccess?.classList.add('show');
+      } else {
+        if (waitlistBtn) {
+          waitlistBtn.disabled = false;
+          waitlistBtn.textContent = 'Request access →';
+        }
+        alert('Something went wrong. Please try again.');
+      }
+    } catch {
+      if (waitlistBtn) {
+        waitlistBtn.disabled = false;
+        waitlistBtn.textContent = 'Request access →';
+      }
+      alert('Something went wrong. Please try again.');
+    }
+  });
+</script>
