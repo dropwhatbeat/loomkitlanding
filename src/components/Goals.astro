@@ -1,0 +1,239 @@
+---
+---
+<section class="section" id="goals">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow"><span class="num">03</span> <span class="bar"></span> Goals</span>
+      </div>
+      <div>
+        <h2>Goals that LoomKit watches for you.</h2>
+        <p class="lede">Set a daily calorie target and a monthly budget. Every log gets weighed against them — quietly, in the same chat. No dashboard to remember to open.</p>
+      </div>
+    </div>
+
+    <div class="goals-grid">
+
+      <!-- Goal dashboard card -->
+      <div class="goals-card reveal">
+        <div class="goals-card-head">
+          <span class="mono-label">Your goals · May 2026</span>
+          <span class="goals-status"><span class="dot"></span> On track</span>
+        </div>
+
+        <div class="goal-item">
+          <div class="goal-item-head">
+            <span class="goal-name">Daily calories</span>
+            <span class="goal-value">1,340 <span class="goal-target">/ 1,800 kcal</span></span>
+          </div>
+          <div class="goal-bar"><div class="goal-fill" style="width: 74%"></div></div>
+          <div class="goal-foot"><span><span class="em">460 kcal</span> to go</span><span>today</span></div>
+        </div>
+
+        <div class="goal-item">
+          <div class="goal-item-head">
+            <span class="goal-name">Monthly budget</span>
+            <span class="goal-value">$335 <span class="goal-target">/ $800</span></span>
+          </div>
+          <div class="goal-bar"><div class="goal-fill" style="width: 42%"></div></div>
+          <div class="goal-foot"><span><span class="em">$465</span> left</span><span>14 days in</span></div>
+        </div>
+
+        <div class="goal-tip">
+          <span class="goal-tip-mono">Set in chat</span>
+          Try <code>/goals</code> or just say <em>"track 1,800 cal a day"</em>. Change anytime — same way.
+        </div>
+      </div>
+
+      <!-- Chat referencing goals -->
+      <div class="chat-stack reveal stagger">
+        <div class="chat-row">
+          <div class="stack-bubble me">Spent $42 on dinner with mum</div>
+          <div class="stack-bubble bot"><span class="check">✓</span>$42 · Food · $377/$800 this month. Comfortably under.</div>
+        </div>
+        <div class="chat-row">
+          <div class="stack-bubble me">had pho, ~700 kcal</div>
+          <div class="stack-bubble bot"><span class="check">✓</span>700 kcal · 2,040/1,800 today. Over by 240 — plan a lighter morning?</div>
+        </div>
+        <div class="chat-row">
+          <div class="stack-bubble me">how am I doing this month?</div>
+          <div class="stack-bubble bot"><span class="check">✓</span>$377/$800 spent · 47% in. Tracking better than April.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .goals-grid {
+    display: grid;
+    grid-template-columns: 0.92fr 1.08fr;
+    gap: 28px;
+    align-items: start;
+  }
+  @media (max-width: 920px) { .goals-grid { grid-template-columns: 1fr; } }
+
+  .goals-card {
+    background: var(--paper-2);
+    border: 1px solid var(--hair);
+    border-radius: var(--r-xl);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+  }
+  .goals-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--hair);
+  }
+  .goals-card-head .mono-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted-2);
+  }
+  .goals-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--tick);
+    padding: 4px 12px;
+    background: var(--tick-soft);
+    border-radius: 999px;
+  }
+  .goals-status .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--tick);
+  }
+  .goal-item { display: flex; flex-direction: column; gap: 10px; }
+  .goal-item-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .goal-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .goal-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+  }
+  .goal-target { color: var(--muted-2); font-weight: 500; }
+  .goal-bar {
+    height: 8px;
+    background: var(--paper-3);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  .goal-fill {
+    height: 100%;
+    background: var(--ink);
+    border-radius: 999px;
+  }
+  .goal-foot {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.02em;
+    display: flex;
+    justify-content: space-between;
+  }
+  .goal-foot .em { color: var(--ink); font-weight: 600; }
+  .goal-tip {
+    padding: 14px 16px;
+    background: var(--paper);
+    border: 1px dashed var(--hair-2);
+    border-radius: 12px;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .goal-tip code {
+    font-family: 'JetBrains Mono', monospace;
+    background: var(--paper-2);
+    border: 1px solid var(--hair);
+    padding: 2px 7px;
+    border-radius: 6px;
+    color: var(--ink);
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .goal-tip-mono {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted-2);
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  /* Chat stack (reuse from ChatDemo) */
+  .chat-stack {
+    background: var(--paper-2);
+    border: 1px solid var(--hair);
+    border-radius: var(--r-xl);
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .chat-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 14px 0;
+  }
+  .chat-row + .chat-row { border-top: 1px solid var(--hair); }
+  .chat-row:first-child { padding-top: 4px; }
+  .chat-row:last-child { padding-bottom: 4px; }
+  .stack-bubble {
+    max-width: 82%;
+    padding: 11px 16px;
+    border-radius: 16px;
+    font-size: 15px;
+    line-height: 1.45;
+  }
+  .stack-bubble.me {
+    align-self: flex-end;
+    background: var(--ink);
+    color: var(--paper);
+    border-bottom-right-radius: 5px;
+  }
+  .stack-bubble.bot {
+    align-self: flex-start;
+    background: var(--paper-3);
+    color: var(--ink);
+    border-bottom-left-radius: 5px;
+  }
+  .stack-bubble .check {
+    display: inline-grid;
+    place-items: center;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--tick);
+    color: white;
+    font-size: 9px;
+    font-weight: 800;
+    margin-right: 6px;
+    vertical-align: 1px;
+  }
+</style>
