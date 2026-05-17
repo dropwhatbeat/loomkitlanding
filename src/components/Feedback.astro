@@ -1,35 +1,37 @@
 ---
+import copy from '../copy.json';
+const c = copy.feedback;
 ---
 <section class="section alt" id="feedback">
   <div class="wrap">
     <div class="section-head reveal">
       <div>
-        <span class="eyebrow"><span class="num">06</span> <span class="bar"></span> Feedback</span>
+        <span class="eyebrow"><span class="num">06</span> <span class="bar"></span> {c.eyebrow}</span>
       </div>
       <div>
-        <h2>Got thoughts? We actually read these.</h2>
-        <p class="lede">Bug, feature wish, half-baked idea, kind word — all welcome. We reply from a real keyboard.</p>
+        <h2>{c.headline}</h2>
+        <p class="lede">{c.lede}</p>
       </div>
     </div>
 
     <form class="feedback-card reveal" id="feedbackForm">
       <div class="field">
         <label for="msg">Your message</label>
-        <textarea id="msg" name="message" class="textarea" placeholder="What's on your mind? Be as informal as you like — we are." required></textarea>
+        <textarea id="msg" name="message" class="textarea" placeholder={c.messagePlaceholder} required></textarea>
       </div>
       <div class="field">
-        <label for="email">Email <span class="opt">(optional — only if you want a reply)</span></label>
-        <input id="email" name="email" class="input" type="email" placeholder="you@somewhere.cool" />
+        <label for="email">{c.emailLabel} <span class="opt">{c.emailOptional}</span></label>
+        <input id="email" name="email" class="input" type="email" placeholder={c.emailPlaceholder} />
       </div>
       <div class="feedback-foot">
-        <span class="hint">We read every one. Promise.</span>
+        <span class="hint">{c.hint}</span>
         <button class="btn btn-primary" type="submit" id="submit-btn">
-          Send it
+          {c.submit}
           <span class="arrow">→</span>
         </button>
       </div>
       <div class="feedback-success" id="success">
-        <span style="font-weight:700;">✓</span> Got it. Thanks — we'll write back if you left an email.
+        <span style="font-weight:700;">✓</span> {c.success}
       </div>
     </form>
   </div>

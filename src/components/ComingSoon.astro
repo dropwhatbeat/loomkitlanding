@@ -1,65 +1,274 @@
 ---
+import copy from '../copy.json';
+const c = copy.comingSoon;
 ---
 <section class="section">
   <div class="wrap">
     <div class="section-head reveal">
       <div>
-        <span class="eyebrow"><span class="num">05</span> <span class="bar"></span> Roadmap</span>
+        <span class="eyebrow"><span class="num">05</span> <span class="bar"></span> {c.eyebrow}</span>
       </div>
       <div>
-        <h2>What's coming to the kit.</h2>
-        <p class="lede">The MVP earns its place. These build on top of it — same chat, more superpowers.</p>
+        <h2>{c.headline}</h2>
+        <p class="lede">{c.lede}</p>
       </div>
     </div>
 
+    <!-- Featured: Photo forward -->
+    <div class="photo-teaser reveal">
+      <div class="pt-copy">
+        <span class="pt-badge">{c.photoBadge}</span>
+        <h3>{c.photoHeadline1}<br/>{c.photoHeadline2}</h3>
+        <p>{c.photoBody}</p>
+      </div>
+
+      <div class="pt-visual">
+        <!-- Group chat panel -->
+        <div class="pt-panel">
+          <div class="pt-panel-label">{c.photoGroupLabel}</div>
+          <div class="pt-photo-bubble">
+            <div class="pt-photo-img">
+              <span class="pt-photo-emoji">🍜</span>
+            </div>
+            <div class="pt-photo-caption">{c.photoGroupCaption}</div>
+          </div>
+        </div>
+
+        <!-- Forward indicator -->
+        <div class="pt-forward">
+          <svg class="pt-forward-svg" viewBox="0 0 60 24" fill="none" aria-hidden="true">
+            <path d="M0 12 H52" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 3"/>
+            <path d="M48 6 L56 12 L48 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="pt-forward-label">{c.photoForwardLabel}</span>
+        </div>
+
+        <!-- LoomKit panel -->
+        <div class="pt-panel">
+          <div class="pt-panel-label">{c.photoLoomkitLabel}</div>
+          <div class="pt-fwd-msg">
+            <div class="pt-fwd-tag">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 10 20 15 15 20"/><path d="M4 4v7a4 4 0 0 0 4 4h12"/></svg>
+              {c.photoForwardedTag}
+            </div>
+            <div class="pt-photo-img pt-photo-small">
+              <span class="pt-photo-emoji">🍜</span>
+            </div>
+          </div>
+          <div class="pt-bot-bubble">
+            <span class="pt-check">✓</span>
+            <span>{c.photoBotReply}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Remaining roadmap items -->
     <div class="soon-grid stagger reveal">
-      <div class="soon-card">
-        <span class="soon-badge">Soon</span>
-        <div class="soon-num">
-          <span>05 / Photo</span>
-          <span class="glyph">◧</span>
+      {c.items.map(item => (
+        <div class="soon-card">
+          <span class="soon-badge">{c.photoBadgeSoon}</span>
+          <div class="soon-num">
+            <span>{item.num}</span>
+            <span class="glyph">{item.glyph}</span>
+          </div>
+          <h3>{item.title}</h3>
+          <p>{item.body}</p>
         </div>
-        <h3>Food photo recognition</h3>
-        <p>Snap your plate. Get your macros. No barcode hunting, no database scrolling.</p>
-      </div>
-
-      <div class="soon-card">
-        <span class="soon-badge">Soon</span>
-        <div class="soon-num">
-          <span>06 / Voice</span>
-          <span class="glyph">◔</span>
-        </div>
-        <h3>Voice logging</h3>
-        <p>Talk faster than you type. Voice memo in, structured log out. Built for the morning rush.</p>
-      </div>
-
-      <div class="soon-card">
-        <span class="soon-badge">Soon</span>
-        <div class="soon-num">
-          <span>07 / Weekly recap</span>
-          <span class="glyph">▦</span>
-        </div>
-        <h3>Sunday recap</h3>
-        <p>Every Sunday, a short woven report — calories logged, top spend categories, your week vs your goals. Delivered in chat. No tabs.</p>
-      </div>
-
-      <div class="soon-card">
-        <span class="soon-badge">Soon</span>
-        <div class="soon-num">
-          <span>08 / Dashboard</span>
-          <span class="glyph">◱</span>
-        </div>
-        <h3>Dashboard</h3>
-        <p>Your data, visualised. A web view for the weeks you want to look at the numbers.</p>
-      </div>
+      ))}
     </div>
   </div>
 </section>
 
 <style>
+  /* ── Photo teaser card ── */
+  .photo-teaser {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 56px;
+    align-items: center;
+    border: 1px solid var(--hair);
+    border-radius: var(--r-xl);
+    padding: 48px;
+    margin-bottom: 28px;
+    background: var(--paper-2);
+    position: relative;
+    overflow: hidden;
+  }
+  @media (max-width: 920px) {
+    .photo-teaser { grid-template-columns: 1fr; gap: 40px; padding: 36px 28px; }
+  }
+
+  .pt-badge {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted-2);
+    padding: 4px 10px;
+    background: var(--paper);
+    border: 1px solid var(--hair);
+    border-radius: 999px;
+    margin-bottom: 20px;
+  }
+  .pt-copy h3 {
+    font-size: clamp(22px, 2.5vw, 28px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+  .pt-copy p {
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--muted);
+    max-width: 380px;
+  }
+
+  /* Visual */
+  .pt-visual {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  @media (max-width: 540px) {
+    .pt-visual { flex-direction: column; gap: 12px; }
+    .pt-forward { transform: rotate(90deg); }
+  }
+
+  .pt-panel {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: var(--paper);
+    border: 1px solid var(--hair);
+    border-radius: var(--r-lg);
+    padding: 16px;
+  }
+  .pt-panel-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted-2);
+    margin-bottom: 6px;
+  }
+
+  .pt-photo-bubble {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    gap: 8px;
+    max-width: 90%;
+  }
+  .pt-photo-img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: linear-gradient(140deg, #e8d5b0 0%, #f0c46a 55%, #e09040 100%);
+    border-radius: 12px;
+    border-bottom-right-radius: 4px;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+  }
+  .pt-photo-emoji { font-size: 36px; line-height: 1; }
+  .pt-photo-caption {
+    font-size: 13px;
+    color: var(--paper);
+    background: var(--ink);
+    border-radius: 12px;
+    border-bottom-right-radius: 4px;
+    padding: 8px 12px;
+    line-height: 1.4;
+    align-self: flex-end;
+  }
+
+  /* Forward indicator */
+  .pt-forward {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .pt-forward-svg {
+    width: 60px;
+    color: var(--hair-2);
+  }
+  .pt-forward-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted-2);
+    white-space: nowrap;
+    text-align: center;
+  }
+
+  /* LoomKit panel */
+  .pt-fwd-msg {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-self: flex-start;
+    max-width: 90%;
+  }
+  .pt-fwd-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: var(--muted-2);
+    padding: 3px 8px;
+    background: var(--paper-2);
+    border: 1px solid var(--hair);
+    border-radius: 6px;
+    width: fit-content;
+  }
+  .pt-fwd-tag svg { flex-shrink: 0; }
+  .pt-photo-small {
+    aspect-ratio: 4/3;
+    border-radius: 10px;
+    border-bottom-left-radius: 4px;
+  }
+  .pt-photo-small .pt-photo-emoji { font-size: 28px; }
+  .pt-bot-bubble {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    background: var(--paper-3);
+    border-radius: 12px;
+    border-bottom-left-radius: 4px;
+    padding: 10px 13px;
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--ink);
+    max-width: 95%;
+  }
+  .pt-check {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--tick);
+    color: white;
+    display: grid;
+    place-items: center;
+    font-size: 9px;
+    font-weight: 800;
+    margin-top: 1px;
+  }
+
+  /* ── Remaining roadmap grid ── */
   .soon-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 0;
     border-top: 1px solid var(--hair);
     border-left: 1px solid var(--hair);

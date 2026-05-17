@@ -1,33 +1,26 @@
 ---
+import copy from '../copy.json';
+const c = copy.chatDemo;
 ---
 <section class="section" id="how">
   <div class="wrap">
     <div class="how-grid">
       <div class="how-copy reveal">
-        <span class="eyebrow"><span class="bar"></span> How it works</span>
-        <h2>No forms. No app.<br/>Just type.</h2>
-        <p>
-          LoomKit reads what you actually say — currency, calories, time, intent.
-          Three seconds, one message, done. That's the whole workflow.
-        </p>
+        <span class="eyebrow"><span class="bar"></span> {c.eyebrow}</span>
+        <h2>{c.headlineLine1}<br/>{c.headlineLine2}</h2>
+        <p>{c.body}</p>
         <div class="how-tagline">
-          <span class="em">// that's it. seriously.</span>
+          <span class="em">{c.tagline}</span>
         </div>
       </div>
 
       <div class="chat-stack reveal stagger">
-        <div class="chat-row">
-          <div class="stack-bubble me">Spent $18 on lunch</div>
-          <div class="stack-bubble bot"><span class="check">✓</span>$18 logged under <strong>Food</strong></div>
-        </div>
-        <div class="chat-row">
-          <div class="stack-bubble me">Had a chicken salad, about 450 cals</div>
-          <div class="stack-bubble bot"><span class="check">✓</span>450 kcal · 1,340/1,800 today</div>
-        </div>
-        <div class="chat-row">
-          <div class="stack-bubble me">Remind me to call mum in 2 hours</div>
-          <div class="stack-bubble bot"><span class="check">✓</span>Reminder set for 4:30 PM</div>
-        </div>
+        {c.messages.map(msg => (
+          <div class="chat-row">
+            <div class="stack-bubble me">{msg.user}</div>
+            <div class="stack-bubble bot"><span class="check">✓</span>{msg.bot}</div>
+          </div>
+        ))}
       </div>
     </div>
   </div>

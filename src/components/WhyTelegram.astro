@@ -1,44 +1,41 @@
 ---
+import copy from '../copy.json';
+const c = copy.whyTelegram;
 ---
 <section class="section alt" id="about">
   <div class="wrap">
     <div class="why-grid">
       <div class="why-copy reveal">
-        <span class="eyebrow"><span class="num">04</span> <span class="bar"></span> Why Telegram</span>
-        <h2>The best app is the one you already have open.</h2>
+        <span class="eyebrow"><span class="num">04</span> <span class="bar"></span> {c.eyebrow}</span>
+        <h2>{c.headline}</h2>
         <ul class="why-list">
-          <li><span class="why-check">✓</span> No download. No onboarding. No new password.</li>
-          <li><span class="why-check">✓</span> Telegram is already open. LoomKit lives there.</li>
-          <li><span class="why-check">✓</span> One message. Done. Back to your life.</li>
+          {c.points.map(point => (
+            <li><span class="why-check">✓</span> {point}</li>
+          ))}
         </ul>
       </div>
 
       <div class="contrast reveal stagger">
         <div class="contrast-card them">
-          <div class="contrast-label"><span>Other tracking apps</span></div>
+          <div class="contrast-label"><span>{c.themLabel}</span></div>
           <div class="contrast-flow">
-            <span class="contrast-step">Download</span>
-            <span class="contrast-arrow">→</span>
-            <span class="contrast-step">Sign up</span>
-            <span class="contrast-arrow">→</span>
-            <span class="contrast-step">Verify email</span>
-            <span class="contrast-arrow">→</span>
-            <span class="contrast-step">Pick a plan</span>
-            <span class="contrast-arrow">→</span>
-            <span class="contrast-step">Onboard</span>
-            <span class="contrast-arrow">→</span>
-            <span class="contrast-step dead">log thing</span>
+            {c.themSteps.map((step, i) => (
+              <>
+                <span class={`contrast-step${i === c.themSteps.length - 1 ? ' dead' : ''}`}>{step}</span>
+                {i < c.themSteps.length - 1 && <span class="contrast-arrow">→</span>}
+              </>
+            ))}
           </div>
-          <div class="contrast-time-them">~ <span class="em-dark">8 minutes</span> · 4 screens · 1 abandoned cart</div>
+          <div class="contrast-time-them">~ <span class="em-dark">{c.themTime.replace('~ ', '')}</span></div>
         </div>
 
         <div class="contrast-card us">
-          <div class="contrast-label us-label"><span>LoomKit</span></div>
+          <div class="contrast-label us-label"><span>{c.usLabel}</span></div>
           <div class="contrast-bubble">
             <span class="done">✓</span>
-            spent $18 on lunch
+            {c.usMessage}
           </div>
-          <div class="contrast-time">~ <span class="em">3 seconds</span> · 1 message · 0 screens</div>
+          <div class="contrast-time">~ <span class="em">{c.usTime.replace('~ ', '')}</span></div>
         </div>
       </div>
     </div>

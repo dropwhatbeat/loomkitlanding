@@ -9,6 +9,8 @@ import WhyTelegram from '../components/WhyTelegram.astro';
 import ComingSoon from '../components/ComingSoon.astro';
 import Feedback from '../components/Feedback.astro';
 import Footer from '../components/Footer.astro';
+import copy from '../copy.json';
+const m = copy.modal;
 ---
 
 <!DOCTYPE html>
@@ -16,12 +18,12 @@ import Footer from '../components/Footer.astro';
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="LoomKit — your personal life assistant bot on Telegram. Log expenses, calories, and reminders in plain English. No app. No friction. Just type." />
+    <meta name="description" content={copy.meta.description} />
     <meta name="theme-color" content="#FAFAF7" />
 
     <!-- Open Graph -->
-    <meta property="og:title" content="LoomKit — Your brain's backup. Lives in Telegram." />
-    <meta property="og:description" content="Log expenses, calories, and reminders in plain English. No app. No friction. Just type." />
+    <meta property="og:title" content={copy.meta.ogTitle} />
+    <meta property="og:description" content={copy.meta.ogDescription} />
     <meta property="og:type" content="website" />
 
     <!-- Favicon -->
@@ -32,7 +34,7 @@ import Footer from '../components/Footer.astro';
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-    <title>LoomKit — Your brain's backup. Lives in Telegram.</title>
+    <title>{copy.meta.title}</title>
   </head>
   <body>
     <Navbar />
@@ -54,39 +56,37 @@ import Footer from '../components/Footer.astro';
         <button class="modal-close" type="button" data-close aria-label="Close">×</button>
 
         <div class="modal-eyebrow">
-          <span class="live-dot"></span> Private Beta
+          <span class="live-dot"></span> {m.eyebrow}
         </div>
-        <h3 class="modal-title" id="modalTitle">You'll need a whitelist.</h3>
-        <p class="modal-sub">
-          LoomKit is in closed beta. Drop your Telegram handle and we'll add you to our whitelist.
-        </p>
+        <h3 class="modal-title" id="modalTitle">{m.headline}</h3>
+        <p class="modal-sub">{m.sub}</p>
 
         <form class="modal-form" id="whitelistForm">
           <div class="field">
-            <label for="handle">Telegram handle</label>
+            <label for="handle">{m.handleLabel}</label>
             <div class="input-prefix">
               <span class="prefix-glyph">@</span>
-              <input id="handle" type="text" placeholder="username" required pattern="[A-Za-z0-9_]{3,32}" minlength="3" maxlength="32" autocomplete="off" />
+              <input id="handle" type="text" placeholder={m.handlePlaceholder} required pattern="[A-Za-z0-9_]{3,32}" minlength="3" maxlength="32" autocomplete="off" />
             </div>
           </div>
           <div class="field">
-            <label for="reason">What do you want to track? <span class="opt">(optional)</span></label>
-            <input id="reason" class="input" type="text" placeholder="expenses, calories, reminders, anything!" maxlength="80" />
+            <label for="reason">{m.reasonLabel} <span class="opt">{m.reasonOptional}</span></label>
+            <input id="reason" class="input" type="text" placeholder={m.reasonPlaceholder} maxlength="80" />
           </div>
           <button class="btn btn-primary modal-submit" type="submit">
-            Add me to the list
+            {m.submit}
             <span class="arrow">→</span>
           </button>
           <p class="modal-foot-text">
-            No spam.<span class="dot"></span>No emails.<span class="dot"></span>We ping you on Telegram.
+            {m.footerParts[0]}<span class="dot"></span>{m.footerParts[1]}<span class="dot"></span>{m.footerParts[2]}
           </p>
         </form>
 
         <div class="modal-success">
           <div class="modal-success-icon">✓</div>
-          <h4>You're on the list.</h4>
-          <p>We'll ping <strong>@<span id="handleEcho">yourname</span></strong> on Telegram within 48 hours. Look out for a message from <strong>@Loomkit_bot</strong>.</p>
-          <button class="btn btn-ghost" type="button" data-close>Got it</button>
+          <h4>{m.successTitle}</h4>
+          <p set:html={m.successBodyHtml}></p>
+          <button class="btn btn-ghost" type="button" data-close>{m.successClose}</button>
         </div>
       </div>
     </div>

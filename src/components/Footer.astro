@@ -1,4 +1,6 @@
 ---
+import copy from '../copy.json';
+const c = copy.footer;
 ---
 <footer class="foot">
   <div class="wrap">
@@ -14,7 +16,7 @@
           </span>
           LoomKit
         </a>
-        <p class="foot-tag">Built with love and too much caffeine.<br/>Always in your pocket. Never in your face.</p>
+        <p class="foot-tag">{c.tagline1}<br/>{c.tagline2}</p>
       </div>
       <div class="foot-links">
         <a href="https://t.me/Loomkit_bot" target="_blank" rel="noopener" data-whitelist>@Loomkit_bot ↗</a>
@@ -23,8 +25,8 @@
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© 2026 LOOMKIT · ALL RIGHTS RESERVED</span>
-      <span>V0.1 · STILL WRITING THE THREADS</span>
+      <span>{c.copyright}</span>
+      <span>{c.version}</span>
     </div>
   </div>
 </footer>

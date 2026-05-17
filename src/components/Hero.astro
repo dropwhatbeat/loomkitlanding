@@ -1,38 +1,37 @@
 ---
+import copy from '../copy.json';
+const c = copy.hero;
 ---
 <section class="hero" id="top">
   <div class="wrap">
 
     <div class="hero-header hero-copy">
-      <span class="eyebrow"><span class="bar"></span> Live on Telegram · @Loomkit_bot</span>
+      <span class="eyebrow"><span class="bar"></span> {c.eyebrow}</span>
       <h1>
-        Your brain's backup<span class="em">.</span><br />
-        Lives in&nbsp;Telegram.
+        {c.headlinePart1}<span class="em">.</span><br />
+        {c.headlinePart2}
       </h1>
-      <p class="hero-sub">
-        Tell LoomKit what you ate, what you spent, what you need to remember.
-        One plain-English sentence — it parses everything in parallel, weighs it against your goals, and replies.
-      </p>
+      <p class="hero-sub">{c.sub}</p>
       <div class="hero-ctas">
         <a class="btn btn-primary" href="https://t.me/Loomkit_bot" data-whitelist>
-          Open @Loomkit_bot
+          {c.ctaPrimary}
           <span class="arrow">→</span>
         </a>
-        <a class="btn btn-ghost" href="#how">See how it works</a>
+        <a class="btn btn-ghost" href="#how">{c.ctaSecondary}</a>
       </div>
       <div class="hero-beta-hint">
-        <span class="badge"><span class="dot"></span> Private beta</span>
-        <span>Request access to get whitelisted.</span>
+        <span class="badge"><span class="dot"></span> {c.betaBadge}</span>
+        <span>{c.betaHint}</span>
       </div>
     </div>
 
     <!-- Extraction diagram -->
     <div class="extract reveal">
       <div class="extract-input">
-        <span class="extract-step"><span class="num">1</span> You type</span>
+        <span class="extract-step"><span class="num">1</span> {c.demoStep1Label}</span>
         <div class="extract-bubble">
-          <span>I ate chicken rice for dinner, $7</span>
-          <span class="time">19:42</span>
+          <span>{c.demoMessage}</span>
+          <span class="time">{c.demoTime}</span>
         </div>
       </div>
 
@@ -44,7 +43,7 @@
           <path d="M500,0 C500,40 875,40 875,80" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" stroke-dasharray="3 4" />
         </svg>
         <span class="extract-fan-label">
-          <span class="num">2</span> LoomKit extracts &nbsp;·&nbsp; in parallel
+          <span class="num">2</span> {c.demoStep2Label}
         </span>
       </div>
 
@@ -108,11 +107,11 @@
             </span>
           </div>
           <div class="ex-reply-bubble">
-            <span class="tick">✓</span>Logged. <strong>1,340/1,800 kcal</strong> today, <strong>$335/$800</strong> in May. On track — go easy on tomorrow's lunch.
+            <span class="tick">✓</span><span set:html={c.demoReply}></span>
           </div>
           <div class="ex-reply-tag">
             <span class="dot"></span>
-            sent · 19:42
+            {c.demoReplySentTime}
           </div>
         </div>
       </div>
@@ -120,22 +119,15 @@
 
     <!-- Meta strip -->
     <div class="hero-meta">
-      <div class="hero-meta-item">
-        <span class="k">Status</span>
-        <span class="v"><span class="live-dot"></span> Online</span>
-      </div>
-      <div class="hero-meta-item">
-        <span class="k">Inputs per message</span>
-        <span class="v">1</span>
-      </div>
-      <div class="hero-meta-item">
-        <span class="k">Things tracked</span>
-        <span class="v">3 + goals</span>
-      </div>
-      <div class="hero-meta-item">
-        <span class="k">Time to log</span>
-        <span class="v">&lt; 3 sec</span>
-      </div>
+      {c.metaItems.map(item => (
+        <div class="hero-meta-item">
+          <span class="k">{item.label}</span>
+          <span class="v">
+            {item.live && <span class="live-dot"></span>}
+            {item.value}
+          </span>
+        </div>
+      ))}
     </div>
 
   </div>

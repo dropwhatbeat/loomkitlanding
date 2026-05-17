@@ -1,14 +1,16 @@
 ---
+import copy from '../copy.json';
+const c = copy.goals;
 ---
 <section class="section" id="goals">
   <div class="wrap">
     <div class="section-head reveal">
       <div>
-        <span class="eyebrow"><span class="bar"></span> Goals</span>
+        <span class="eyebrow"><span class="bar"></span> {c.eyebrow}</span>
       </div>
       <div>
-        <h2>Goals that LoomKit watches for you.</h2>
-        <p class="lede">Set a daily calorie target and a monthly budget. Every log gets weighed against them — quietly, in the same chat. No dashboard to remember to open.</p>
+        <h2>{c.headline}</h2>
+        <p class="lede">{c.lede}</p>
       </div>
     </div>
 
@@ -17,13 +19,13 @@
       <!-- Goal dashboard card -->
       <div class="goals-card reveal">
         <div class="goals-card-head">
-          <span class="mono-label">Your goals · May 2026</span>
-          <span class="goals-status"><span class="dot"></span> On track</span>
+          <span class="mono-label">{c.cardLabel}</span>
+          <span class="goals-status"><span class="dot"></span> {c.cardStatus}</span>
         </div>
 
         <div class="goal-item">
           <div class="goal-item-head">
-            <span class="goal-name">Daily calories</span>
+            <span class="goal-name">{c.goalCaloriesName}</span>
             <span class="goal-value">1,340 <span class="goal-target">/ 1,800 kcal</span></span>
           </div>
           <div class="goal-bar"><div class="goal-fill" style="width: 74%"></div></div>
@@ -32,7 +34,7 @@
 
         <div class="goal-item">
           <div class="goal-item-head">
-            <span class="goal-name">Monthly budget</span>
+            <span class="goal-name">{c.goalBudgetName}</span>
             <span class="goal-value">$335 <span class="goal-target">/ $800</span></span>
           </div>
           <div class="goal-bar"><div class="goal-fill" style="width: 42%"></div></div>
@@ -40,25 +42,19 @@
         </div>
 
         <div class="goal-tip">
-          <span class="goal-tip-mono">Set in chat</span>
-          Try <code>/goals</code> or just say <em>"track 1,800 cal a day"</em>. Change anytime — same way.
+          <span class="goal-tip-mono">{c.tipLabel}</span>
+          <span set:html={c.tip}></span>
         </div>
       </div>
 
       <!-- Chat referencing goals -->
       <div class="chat-stack reveal stagger">
-        <div class="chat-row">
-          <div class="stack-bubble me">Spent $42 on dinner with mum</div>
-          <div class="stack-bubble bot"><span class="check">✓</span>$42 · Food · $377/$800 this month. Comfortably under.</div>
-        </div>
-        <div class="chat-row">
-          <div class="stack-bubble me">had pho, ~700 kcal</div>
-          <div class="stack-bubble bot"><span class="check">✓</span>700 kcal · 2,040/1,800 today. Over by 240 — plan a lighter morning?</div>
-        </div>
-        <div class="chat-row">
-          <div class="stack-bubble me">how am I doing this month?</div>
-          <div class="stack-bubble bot"><span class="check">✓</span>$377/$800 spent · 47% in. Tracking better than April.</div>
-        </div>
+        {c.messages.map(msg => (
+          <div class="chat-row">
+            <div class="stack-bubble me">{msg.user}</div>
+            <div class="stack-bubble bot"><span class="check">✓</span>{msg.bot}</div>
+          </div>
+        ))}
       </div>
 
     </div>
@@ -165,7 +161,7 @@
     color: var(--muted);
     line-height: 1.6;
   }
-  .goal-tip code {
+  .goal-tip :global(code) {
     font-family: 'JetBrains Mono', monospace;
     background: var(--paper-2);
     border: 1px solid var(--hair);
@@ -185,7 +181,7 @@
     margin-bottom: 6px;
   }
 
-  /* Chat stack (reuse from ChatDemo) */
+  /* Chat stack */
   .chat-stack {
     background: var(--paper-2);
     border: 1px solid var(--hair);
