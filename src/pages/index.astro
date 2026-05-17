@@ -1,0 +1,48 @@
+---
+import '../styles/global.css';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import ChatDemo from '../components/ChatDemo.astro';
+import Features from '../components/Features.astro';
+import WhyTelegram from '../components/WhyTelegram.astro';
+import ComingSoon from '../components/ComingSoon.astro';
+import Feedback from '../components/Feedback.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="LoomKit — your personal life assistant bot on Telegram. Log expenses, calories, and reminders in plain English. No app. No friction. Just type." />
+    <meta name="theme-color" content="#0D0D0D" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="LoomKit — Your brain's backup. Lives in Telegram." />
+    <meta property="og:description" content="Log expenses, calories, and reminders in plain English. No app. No friction. Just type." />
+    <meta property="og:type" content="website" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <title>LoomKit — Your brain's backup. Lives in Telegram.</title>
+  </head>
+  <body>
+    <Navbar />
+    <main>
+      <Hero />
+      <ChatDemo />
+      <Features />
+      <WhyTelegram />
+      <ComingSoon />
+      <Feedback />
+    </main>
+    <Footer />
+  </body>
+</html>

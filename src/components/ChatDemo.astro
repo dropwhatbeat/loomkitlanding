@@ -1,0 +1,118 @@
+---
+---
+<section id="how-it-works" class="py-24 px-6">
+  <div class="max-w-3xl mx-auto">
+    <!-- Section headline -->
+    <div class="text-center mb-16">
+      <h2 class="text-3xl sm:text-4xl font-bold text-[#F9FAFB] mb-4">No forms. No app. Just type.</h2>
+      <p class="text-[#6B7280] text-lg">Watch LoomKit handle the grunt work in real time.</p>
+    </div>
+
+    <!-- Chat window -->
+    <div class="max-w-md mx-auto">
+      <div class="bg-[#1A1A2E] rounded-2xl overflow-hidden shadow-2xl border border-gray-800/50" style="box-shadow: 0 20px 60px rgba(124, 58, 237, 0.15);">
+
+        <!-- Chat header -->
+        <div class="bg-[#0D0D0D] px-4 py-3 flex items-center gap-3 border-b border-gray-800/60">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#7C3AED] to-[#10B981] flex items-center justify-center font-bold text-white text-sm">L</div>
+          <div class="flex-1">
+            <p class="text-[#F9FAFB] font-semibold text-sm">LoomKit Bot</p>
+            <div class="flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-[#10B981]"></span>
+              <span class="text-[#10B981] text-xs">online</span>
+            </div>
+          </div>
+          <!-- Three dots menu -->
+          <div class="flex gap-1">
+            <span class="w-1 h-1 rounded-full bg-[#6B7280]"></span>
+            <span class="w-1 h-1 rounded-full bg-[#6B7280]"></span>
+            <span class="w-1 h-1 rounded-full bg-[#6B7280]"></span>
+          </div>
+        </div>
+
+        <!-- Messages -->
+        <div class="px-4 py-5 flex flex-col gap-3 min-h-80">
+
+          <!-- Exchange 1 -->
+          <div class="chat-bubble flex justify-end opacity-0" data-dir="right">
+            <div class="bg-[#7C3AED] text-white text-sm px-4 py-2.5 rounded-2xl rounded-tr-sm max-w-[75%] shadow-sm">
+              Spent $18 on lunch
+            </div>
+          </div>
+          <div class="chat-bubble flex justify-start opacity-0" data-dir="left">
+            <div class="bg-[#0D0D0D] text-[#F9FAFB] text-sm px-4 py-2.5 rounded-2xl rounded-tl-sm max-w-[75%] border border-gray-800/60">
+              ✅ $18 logged under <span class="text-[#10B981] font-semibold">Food</span>
+            </div>
+          </div>
+
+          <!-- Exchange 2 -->
+          <div class="chat-bubble flex justify-end opacity-0" data-dir="right">
+            <div class="bg-[#7C3AED] text-white text-sm px-4 py-2.5 rounded-2xl rounded-tr-sm max-w-[75%] shadow-sm">
+              Had a chicken salad, about 450 cals
+            </div>
+          </div>
+          <div class="chat-bubble flex justify-start opacity-0" data-dir="left">
+            <div class="bg-[#0D0D0D] text-[#F9FAFB] text-sm px-4 py-2.5 rounded-2xl rounded-tl-sm max-w-[75%] border border-gray-800/60">
+              ✅ <span class="text-[#10B981] font-semibold">450 kcal</span> logged
+            </div>
+          </div>
+
+          <!-- Exchange 3 -->
+          <div class="chat-bubble flex justify-end opacity-0" data-dir="right">
+            <div class="bg-[#7C3AED] text-white text-sm px-4 py-2.5 rounded-2xl rounded-tr-sm max-w-[75%] shadow-sm">
+              Remind me to call mum in 2 hours
+            </div>
+          </div>
+          <div class="chat-bubble flex justify-start opacity-0" data-dir="left">
+            <div class="bg-[#0D0D0D] text-[#F9FAFB] text-sm px-4 py-2.5 rounded-2xl rounded-tl-sm max-w-[75%] border border-gray-800/60">
+              ✅ Reminder set for <span class="text-[#10B981] font-semibold">2:00 PM</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Tagline -->
+      <p id="chat-tagline" class="text-center text-[#F9FAFB] text-xl font-semibold mt-8 opacity-0">
+        That's it. <span class="text-[#7C3AED]">Seriously.</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const bubbles = document.querySelectorAll('.chat-bubble');
+  const tagline = document.getElementById('chat-tagline');
+
+  // Set initial x offsets before animation
+  bubbles.forEach((el) => {
+    const dir = el.getAttribute('data-dir');
+    gsap.set(el, { x: dir === 'right' ? 30 : -30 });
+  });
+
+  gsap.timeline({
+    scrollTrigger: {
+      trigger: '#how-it-works',
+      start: 'top 60%',
+      once: true,
+    }
+  })
+  .to(Array.from(bubbles), {
+    opacity: 1,
+    x: 0,
+    duration: 0.5,
+    stagger: 0.4,
+    ease: 'power2.out',
+  })
+  .to(tagline, {
+    opacity: 1,
+    y: 0,
+    duration: 0.6,
+    ease: 'power2.out',
+  }, '+=0.2');
+</script>

@@ -1,0 +1,77 @@
+---
+---
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <!-- Wordmark -->
+    <a href="/" class="text-xl font-bold text-[#7C3AED] tracking-tight">LoomKit</a>
+
+    <!-- Desktop nav -->
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#features" class="text-[#6B7280] hover:text-[#F9FAFB] transition-colors text-sm font-medium">Features</a>
+      <a href="#how-it-works" class="text-[#6B7280] hover:text-[#F9FAFB] transition-colors text-sm font-medium">How It Works</a>
+      <a href="#about" class="text-[#6B7280] hover:text-[#F9FAFB] transition-colors text-sm font-medium">About</a>
+      <a
+        href="https://t.me/Loomkit_bot"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="bg-[#7C3AED] hover:bg-[#6D28D9] text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors"
+      >
+        Open in Telegram
+      </a>
+    </div>
+
+    <!-- Mobile hamburger -->
+    <button id="menu-toggle" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Toggle menu">
+      <span class="block w-6 h-0.5 bg-[#F9FAFB] transition-all duration-300" id="bar1"></span>
+      <span class="block w-6 h-0.5 bg-[#F9FAFB] transition-all duration-300" id="bar2"></span>
+      <span class="block w-6 h-0.5 bg-[#F9FAFB] transition-all duration-300" id="bar3"></span>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-[#0D0D0D] border-t border-gray-800 px-6 py-4 flex flex-col gap-4">
+    <a href="#features" class="text-[#6B7280] hover:text-[#F9FAFB] transition-colors text-sm font-medium">Features</a>
+    <a href="#how-it-works" class="text-[#6B7280] hover:text-[#F9FAFB] transition-colors text-sm font-medium">How It Works</a>
+    <a href="#about" class="text-[#6B7280] hover:text-[#F9FAFB] transition-colors text-sm font-medium">About</a>
+    <a
+      href="https://t.me/Loomkit_bot"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="bg-[#7C3AED] hover:bg-[#6D28D9] text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors text-center"
+    >
+      Open in Telegram
+    </a>
+  </div>
+</nav>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  // Scroll glass effect
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) {
+      navbar?.classList.add('bg-[#0D0D0D]/80', 'backdrop-blur-md', 'border-b', 'border-gray-800/60');
+    } else {
+      navbar?.classList.remove('bg-[#0D0D0D]/80', 'backdrop-blur-md', 'border-b', 'border-gray-800/60');
+    }
+  });
+
+  // Mobile menu toggle
+  menuToggle?.addEventListener('click', () => {
+    const isOpen = !mobileMenu?.classList.contains('hidden');
+    if (isOpen) {
+      mobileMenu?.classList.add('hidden');
+    } else {
+      mobileMenu?.classList.remove('hidden');
+    }
+  });
+
+  // Close mobile menu on link click
+  mobileMenu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('hidden');
+    });
+  });
+</script>
