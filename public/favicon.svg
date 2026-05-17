@@ -1,5 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
-  <rect width="100" height="100" rx="20" fill="#0D0D0D"/>
-  <polygon points="50,10 90,50 50,90 10,50" fill="#7C3AED"/>
-  <polygon points="50,25 75,50 50,75 25,50" fill="#10B981"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <rect width="32" height="32" rx="7" fill="#0A0A0A"/>
+  <g transform="translate(5, 5) scale(0.917)" stroke="#FAFAF7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M2 3.5h18M2 10h18M2 16.5h18"/>
+    <path d="M7 3.5v13M13 3.5v13" opacity="0.4"/>
+  </g>
 </svg>
