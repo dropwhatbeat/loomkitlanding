@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar.astro';
 import Hero from '../components/Hero.astro';
 import ChatDemo from '../components/ChatDemo.astro';
 import Features from '../components/Features.astro';
+import Goals from '../components/Goals.astro';
 import WhyTelegram from '../components/WhyTelegram.astro';
 import ComingSoon from '../components/ComingSoon.astro';
 import Feedback from '../components/Feedback.astro';
@@ -16,7 +17,7 @@ import Footer from '../components/Footer.astro';
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="LoomKit — your personal life assistant bot on Telegram. Log expenses, calories, and reminders in plain English. No app. No friction. Just type." />
-    <meta name="theme-color" content="#0D0D0D" />
+    <meta name="theme-color" content="#FAFAF7" />
 
     <!-- Open Graph -->
     <meta property="og:title" content="LoomKit — Your brain's backup. Lives in Telegram." />
@@ -26,10 +27,10 @@ import Footer from '../components/Footer.astro';
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <!-- Google Fonts: Inter -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
     <title>LoomKit — Your brain's backup. Lives in Telegram.</title>
   </head>
@@ -39,10 +40,119 @@ import Footer from '../components/Footer.astro';
       <Hero />
       <ChatDemo />
       <Features />
+      <Goals />
       <WhyTelegram />
       <ComingSoon />
       <Feedback />
     </main>
     <Footer />
+
+    <!-- Whitelist modal -->
+    <div class="modal" id="whitelistModal" aria-hidden="true">
+      <div class="modal-backdrop" data-close></div>
+      <div class="modal-card" role="dialog" aria-labelledby="modalTitle">
+        <button class="modal-close" type="button" data-close aria-label="Close">×</button>
+
+        <div class="modal-eyebrow">
+          <span class="live-dot"></span> Private Beta
+        </div>
+        <h3 class="modal-title" id="modalTitle">You'll need a whitelist.</h3>
+        <p class="modal-sub">
+          LoomKit is in closed beta — we whitelist new users by hand to keep replies fast. Drop your Telegram handle and we'll add you within 48 hours.
+        </p>
+
+        <form class="modal-form" id="whitelistForm">
+          <div class="field">
+            <label for="handle">Telegram handle</label>
+            <div class="input-prefix">
+              <span class="prefix-glyph">@</span>
+              <input id="handle" type="text" placeholder="yourname" required pattern="[A-Za-z0-9_]{3,32}" minlength="3" maxlength="32" autocomplete="off" />
+            </div>
+          </div>
+          <div class="field">
+            <label for="reason">What do you want to track? <span class="opt">(optional)</span></label>
+            <input id="reason" class="input" type="text" placeholder="calories, food spend, anything…" maxlength="80" />
+          </div>
+          <button class="btn btn-primary modal-submit" type="submit">
+            Add me to the list
+            <span class="arrow">→</span>
+          </button>
+          <p class="modal-foot-text">
+            No spam.<span class="dot"></span>No emails.<span class="dot"></span>We ping you on Telegram.
+          </p>
+        </form>
+
+        <div class="modal-success">
+          <div class="modal-success-icon">✓</div>
+          <h4>You're on the list.</h4>
+          <p>We'll ping <strong>@<span id="handleEcho">yourname</span></strong> on Telegram within 48 hours. Look out for a message from <strong>@Loomkit_bot</strong>.</p>
+          <button class="btn btn-ghost" type="button" data-close>Got it</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // ── nav blur on scroll ──
+        const nav = document.getElementById('nav');
+        const onScroll = () => nav?.classList.toggle('scrolled', window.scrollY > 12);
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+
+        // ── reveal on intersect ──
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach(e => {
+            if (e.isIntersecting) {
+              e.target.classList.add('in');
+              io.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+        // ── whitelist modal ──
+        const modal = document.getElementById('whitelistModal');
+        const modalCard = modal?.querySelector('.modal-card');
+        const handleInput = document.getElementById('handle') as HTMLInputElement | null;
+
+        const openModal = () => {
+          modalCard?.classList.remove('success');
+          (document.getElementById('whitelistForm') as HTMLFormElement)?.reset();
+          modal?.classList.add('open');
+          modal?.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+          setTimeout(() => handleInput?.focus(), 80);
+        };
+        const closeModal = () => {
+          modal?.classList.remove('open');
+          modal?.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = '';
+        };
+
+        modal?.querySelectorAll('[data-close]').forEach(el =>
+          el.addEventListener('click', closeModal)
+        );
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && modal?.classList.contains('open')) closeModal();
+        });
+
+        // intercept all Telegram CTA links
+        document.querySelectorAll('a[data-whitelist]').forEach(a => {
+          a.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal();
+          });
+        });
+
+        // submit → success state
+        document.getElementById('whitelistForm')?.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const handle = handleInput?.value.replace(/^@/, '').trim() || '';
+          const echo = document.getElementById('handleEcho');
+          if (echo) echo.textContent = handle || 'yourname';
+          modalCard?.classList.add('success');
+        });
+      });
+    </script>
   </body>
 </html>

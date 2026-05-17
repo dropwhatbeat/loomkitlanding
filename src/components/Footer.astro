@@ -1,34 +1,105 @@
 ---
 ---
-<footer class="border-t border-gray-800 bg-[#0D0D0D]">
-  <div class="max-w-7xl mx-auto px-6 py-10">
-    <!-- Main row -->
-    <div class="flex flex-col sm:flex-row items-center justify-between gap-6 mb-8">
-      <!-- Wordmark -->
-      <a href="/" class="text-xl font-bold text-[#7C3AED] tracking-tight">LoomKit</a>
-
-      <!-- Center text -->
-      <p class="text-[#6B7280] text-sm text-center">
-        Built with love and too much caffeine.
-      </p>
-
-      <!-- CTA -->
-      <a
-        href="https://t.me/Loomkit_bot"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 text-[#7C3AED] hover:text-[#6D28D9] text-sm font-semibold transition-colors"
-      >
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.17 13.585l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.978.974z"/>
-        </svg>
-        Open @Loomkit_bot
-      </a>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="#top">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 5h16M4 12h16M4 19h16"/>
+              <path d="M9 5v14M15 5v14" opacity="0.4"/>
+            </svg>
+            <span class="dot"></span>
+          </span>
+          LoomKit
+        </a>
+        <p class="foot-tag">Built with love and too much caffeine.<br/>Always in your pocket. Never in your face.</p>
+      </div>
+      <div class="foot-links">
+        <a href="https://t.me/Loomkit_bot" target="_blank" rel="noopener" data-whitelist>@Loomkit_bot ↗</a>
+        <a href="#features">Features</a>
+        <a href="#feedback">Contact</a>
+      </div>
     </div>
-
-    <!-- Bottom copyright -->
-    <div class="border-t border-gray-800/60 pt-6 text-center">
-      <p class="text-[#6B7280] text-xs">© 2025 LoomKit. All rights reserved.</p>
+    <div class="foot-bottom">
+      <span>© 2026 LOOMKIT · ALL RIGHTS RESERVED</span>
+      <span>V0.1 · STILL WRITING THE THREADS</span>
     </div>
   </div>
 </footer>
+
+<style>
+  .foot {
+    border-top: 1px solid var(--hair);
+    padding: 56px 0 36px;
+    background: var(--paper);
+  }
+  .foot-grid {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .foot-brand { max-width: 360px; }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+    font-size: 19px;
+    letter-spacing: -0.035em;
+    color: var(--ink);
+  }
+  .brand-mark {
+    width: 22px;
+    height: 22px;
+    position: relative;
+    display: grid;
+    place-items: center;
+  }
+  .brand-mark svg { width: 100%; height: 100%; }
+  .brand-mark .dot {
+    position: absolute;
+    right: -2px;
+    bottom: -1px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--tick);
+    border: 1.5px solid var(--paper);
+  }
+  .foot-tag {
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.55;
+  }
+  .foot-links {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+  }
+  .foot-links a {
+    font-size: 14px;
+    color: var(--muted);
+    transition: color .2s ease;
+    cursor: pointer;
+  }
+  .foot-links a:hover { color: var(--ink); }
+  .foot-bottom {
+    margin-top: 44px;
+    padding-top: 22px;
+    border-top: 1px solid var(--hair);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted-2);
+    letter-spacing: 0.06em;
+  }
+</style>

@@ -1,64 +1,118 @@
 ---
 ---
-<section id="features" class="py-24 px-6 bg-[#0D0D0D]">
-  <div class="max-w-7xl mx-auto">
-    <!-- Headline -->
-    <div class="text-center mb-16">
-      <h2 class="text-3xl sm:text-4xl font-bold text-[#F9FAFB] mb-4">
-        Everything you track.<br />
-        <span class="text-[#7C3AED]">One place you already live.</span>
-      </h2>
+<section class="section alt" id="features">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow"><span class="num">02</span> <span class="bar"></span> Features</span>
+      </div>
+      <div>
+        <h2>Everything you track. One place you already live.</h2>
+        <p class="lede">Three things, done well. No social feed. No streaks shouting at you. No notifications you didn't ask for.</p>
+      </div>
     </div>
 
-    <!-- Cards grid -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-      <!-- Card 1: Expense Logging -->
-      <div class="feature-card bg-[#1A1A2E] rounded-2xl p-8 border border-gray-800/40 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#7C3AED]/10 transition-all duration-300 opacity-0 translate-y-8">
-        <div class="text-4xl mb-5">💸</div>
-        <h3 class="text-[#F9FAFB] font-bold text-xl mb-3">Expense Logging</h3>
-        <p class="text-[#6B7280] leading-relaxed">
-          Just say what you spent. It categorises, converts currency, and logs it instantly.
-        </p>
+    <div class="feat-grid stagger reveal">
+      <div class="feat-card">
+        <div class="feat-num">
+          <span>01 / Expense</span>
+          <span class="glyph">$</span>
+        </div>
+        <h3>Expense logging</h3>
+        <p>Just say what you spent. LoomKit categorises, converts currency, and logs it instantly.</p>
+        <div class="feat-example">
+          <div class="you">¥3,200 ramen w/ alex</div>
+          <div class="bot">¥3,200 → $21.40 · Food</div>
+        </div>
       </div>
 
-      <!-- Card 2: Calorie Tracking -->
-      <div class="feature-card bg-[#1A1A2E] rounded-2xl p-8 border border-gray-800/40 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#10B981]/10 transition-all duration-300 opacity-0 translate-y-8">
-        <div class="text-4xl mb-5">🥗</div>
-        <h3 class="text-[#F9FAFB] font-bold text-xl mb-3">Calorie Tracking</h3>
-        <p class="text-[#6B7280] leading-relaxed">
-          Text a meal or snap a photo. No manual entry, no counting, no guilt.
-        </p>
+      <div class="feat-card">
+        <div class="feat-num">
+          <span>02 / Calories</span>
+          <span class="glyph">◐</span>
+        </div>
+        <h3>Calorie tracking</h3>
+        <p>Text a meal or snap a photo. No manual entry, no database search, no counting.</p>
+        <div class="feat-example">
+          <div class="you">chicken wrap and a flat white</div>
+          <div class="bot">620 kcal · 38g protein</div>
+        </div>
       </div>
 
-      <!-- Card 3: Smart Reminders -->
-      <div class="feature-card bg-[#1A1A2E] rounded-2xl p-8 border border-gray-800/40 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#7C3AED]/10 transition-all duration-300 opacity-0 translate-y-8">
-        <div class="text-4xl mb-5">⏰</div>
-        <h3 class="text-[#F9FAFB] font-bold text-xl mb-3">Smart Reminders</h3>
-        <p class="text-[#6B7280] leading-relaxed">
-          "In 2 hours", "tomorrow morning" — it speaks human.
-        </p>
+      <div class="feat-card">
+        <div class="feat-num">
+          <span>03 / Reminders</span>
+          <span class="glyph">◷</span>
+        </div>
+        <h3>Smart reminders</h3>
+        <p>"In 2 hours", "tomorrow morning", "next Friday" — LoomKit speaks human, not cron.</p>
+        <div class="feat-example">
+          <div class="you">ping me tmrw 9am re: rent</div>
+          <div class="bot">set for tue, may 18 · 09:00</div>
+        </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<script>
-  const cards = document.querySelectorAll('.feature-card');
+<style>
+  .feat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--hair);
+    border-bottom: 1px solid var(--hair);
+  }
+  @media (max-width: 920px) { .feat-grid { grid-template-columns: 1fr; } }
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => {
-          (entry.target as HTMLElement).style.opacity = '1';
-          (entry.target as HTMLElement).style.transform = 'translateY(0)';
-          (entry.target as HTMLElement).style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        }, i * 150);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15 });
+  .feat-card {
+    position: relative;
+    padding: 36px 28px;
+    border-right: 1px solid var(--hair);
+    transition: background .2s ease;
+  }
+  .feat-card:last-child { border-right: none; }
+  @media (max-width: 920px) {
+    .feat-card { border-right: none; border-bottom: 1px solid var(--hair); }
+    .feat-card:last-child { border-bottom: none; }
+  }
+  .feat-card:hover { background: var(--paper); }
 
-  cards.forEach(card => observer.observe(card));
-</script>
+  .feat-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted-2);
+    letter-spacing: 0.16em;
+    margin-bottom: 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .feat-num .glyph {
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--hair-2);
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    color: var(--ink);
+    font-size: 14px;
+  }
+  .feat-card h3 { margin-bottom: 10px; }
+  .feat-card p { font-size: 15px; line-height: 1.55; }
+  .feat-card .feat-example {
+    margin-top: 22px;
+    padding: 12px 14px;
+    background: var(--paper-3);
+    border-radius: 10px;
+    border: 1px solid var(--hair);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .feat-example .you::before { content: '→ '; color: var(--ink); }
+  .feat-example .you { color: var(--ink); }
+  .feat-example .bot::before { content: '✓ '; color: var(--tick); }
+  .feat-example .bot { color: var(--muted); }
+</style>

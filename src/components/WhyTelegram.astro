@@ -1,81 +1,185 @@
 ---
 ---
-<section class="py-24 px-6">
-  <div class="max-w-7xl mx-auto">
-    <!-- Headline -->
-    <div class="text-center mb-16">
-      <h2 class="text-3xl sm:text-4xl font-bold text-[#F9FAFB]">
-        The best app is the one you<br />
-        <span class="text-[#7C3AED]">already have open.</span>
-      </h2>
-    </div>
-
-    <!-- Two column layout -->
-    <div class="flex flex-col md:flex-row items-start gap-12 md:gap-16">
-
-      <!-- Left: bullet points -->
-      <div class="flex-1 flex flex-col gap-6">
-        <div class="flex items-start gap-4">
-          <div class="w-6 h-6 rounded-full bg-[#7C3AED]/15 border border-[#7C3AED]/30 flex items-center justify-center flex-shrink-0 mt-0.5">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="20 6 9 17 4 12"/>
-            </svg>
-          </div>
-          <p class="text-[#F9FAFB] text-lg leading-relaxed">No download. No onboarding. No new passwords.</p>
-        </div>
-
-        <div class="flex items-start gap-4">
-          <div class="w-6 h-6 rounded-full bg-[#7C3AED]/15 border border-[#7C3AED]/30 flex items-center justify-center flex-shrink-0 mt-0.5">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="20 6 9 17 4 12"/>
-            </svg>
-          </div>
-          <p class="text-[#F9FAFB] text-lg leading-relaxed">Telegram is already open on your phone. LoomKit lives there.</p>
-        </div>
-
-        <div class="flex items-start gap-4">
-          <div class="w-6 h-6 rounded-full bg-[#7C3AED]/15 border border-[#7C3AED]/30 flex items-center justify-center flex-shrink-0 mt-0.5">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="20 6 9 17 4 12"/>
-            </svg>
-          </div>
-          <p class="text-[#F9FAFB] text-lg leading-relaxed">One message. Done. Back to your life.</p>
-        </div>
+<section class="section alt" id="about">
+  <div class="wrap">
+    <div class="why-grid">
+      <div class="why-copy reveal">
+        <span class="eyebrow"><span class="num">04</span> <span class="bar"></span> Why Telegram</span>
+        <h2>The best app is the one you already have open.</h2>
+        <ul class="why-list">
+          <li><span class="why-check">✓</span> No download. No onboarding. No new password.</li>
+          <li><span class="why-check">✓</span> Telegram is already open. LoomKit lives there.</li>
+          <li><span class="why-check">✓</span> One message. Done. Back to your life.</li>
+        </ul>
       </div>
 
-      <!-- Right: comparison visual -->
-      <div class="flex-1 flex flex-col sm:flex-row gap-4">
-
-        <!-- Other apps box -->
-        <div class="flex-1 border border-red-900/40 bg-red-950/10 rounded-2xl p-6">
-          <p class="text-[#6B7280] text-xs font-semibold uppercase tracking-widest mb-4">Other apps</p>
-          <div class="flex flex-col gap-3">
-            <div class="flex items-center gap-3">
-              <span class="w-5 h-5 rounded-full bg-red-900/40 flex items-center justify-center text-red-400 text-xs font-bold flex-shrink-0">1</span>
-              <span class="text-[#6B7280] text-sm line-through decoration-red-800">Download</span>
-            </div>
-            <div class="w-0 h-4 border-l border-dashed border-red-900/40 ml-2.5"></div>
-            <div class="flex items-center gap-3">
-              <span class="w-5 h-5 rounded-full bg-red-900/40 flex items-center justify-center text-red-400 text-xs font-bold flex-shrink-0">2</span>
-              <span class="text-[#6B7280] text-sm line-through decoration-red-800">Sign up</span>
-            </div>
-            <div class="w-0 h-4 border-l border-dashed border-red-900/40 ml-2.5"></div>
-            <div class="flex items-center gap-3">
-              <span class="w-5 h-5 rounded-full bg-red-900/40 flex items-center justify-center text-red-400 text-xs font-bold flex-shrink-0">3</span>
-              <span class="text-[#6B7280] text-sm line-through decoration-red-800">Learn UI</span>
-            </div>
+      <div class="contrast reveal stagger">
+        <div class="contrast-card them">
+          <div class="contrast-label"><span>Other tracking apps</span></div>
+          <div class="contrast-flow">
+            <span class="contrast-step">Download</span>
+            <span class="contrast-arrow">→</span>
+            <span class="contrast-step">Sign up</span>
+            <span class="contrast-arrow">→</span>
+            <span class="contrast-step">Verify email</span>
+            <span class="contrast-arrow">→</span>
+            <span class="contrast-step">Pick a plan</span>
+            <span class="contrast-arrow">→</span>
+            <span class="contrast-step">Onboard</span>
+            <span class="contrast-arrow">→</span>
+            <span class="contrast-step dead">log thing</span>
           </div>
+          <div class="contrast-time-them">~ <span class="em-dark">8 minutes</span> · 4 screens · 1 abandoned cart</div>
         </div>
 
-        <!-- LoomKit box -->
-        <div class="flex-1 border border-[#10B981]/40 bg-[#10B981]/5 rounded-2xl p-6 flex flex-col justify-center items-center text-center">
-          <p class="text-[#10B981] text-xs font-semibold uppercase tracking-widest mb-4">LoomKit</p>
-          <p class="text-[#F9FAFB] text-2xl font-bold">Type.</p>
-          <p class="text-[#10B981] text-2xl font-bold">Done.</p>
-          <div class="mt-4 text-3xl">✅</div>
+        <div class="contrast-card us">
+          <div class="contrast-label us-label"><span>LoomKit</span></div>
+          <div class="contrast-bubble">
+            <span class="done">✓</span>
+            spent $18 on lunch
+          </div>
+          <div class="contrast-time">~ <span class="em">3 seconds</span> · 1 message · 0 screens</div>
         </div>
-
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  @media (max-width: 920px) { .why-grid { grid-template-columns: 1fr; gap: 48px; } }
+
+  .why-copy .eyebrow { margin-bottom: 24px; }
+  .why-copy h2 { margin-bottom: 24px; }
+  .why-list {
+    list-style: none;
+    padding: 0;
+    margin: 24px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid var(--hair);
+  }
+  .why-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    font-size: 18px;
+    color: var(--ink);
+    font-weight: 500;
+    line-height: 1.4;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--hair);
+    letter-spacing: -0.01em;
+  }
+  .why-check {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--tick-soft);
+    color: var(--tick);
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    font-weight: 800;
+    margin-top: 2px;
+    font-size: 11px;
+  }
+
+  .contrast {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .contrast-card {
+    border: 1px solid var(--hair);
+    border-radius: var(--r-lg);
+    padding: 24px;
+    background: var(--paper);
+  }
+  .contrast-card.us {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+  .contrast-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted-2);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .us-label { color: rgba(250,250,247,0.5); }
+  .contrast-flow {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .contrast-step {
+    padding: 7px 11px;
+    border-radius: 8px;
+    background: var(--paper-2);
+    border: 1px solid var(--hair);
+    font-size: 12.5px;
+    color: var(--muted);
+    font-weight: 500;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: -0.01em;
+  }
+  .contrast-step.dead {
+    text-decoration: line-through;
+    text-decoration-color: var(--muted-2);
+    color: var(--muted-2);
+  }
+  .contrast-arrow { color: var(--muted-2); font-size: 12px; }
+  .contrast-bubble {
+    background: var(--paper);
+    color: var(--ink);
+    padding: 12px 16px;
+    border-radius: 16px;
+    border-bottom-left-radius: 5px;
+    font-size: 15px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    max-width: fit-content;
+  }
+  .done {
+    width: 18px;
+    height: 18px;
+    background: var(--tick);
+    color: white;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 10px;
+    font-weight: 800;
+  }
+  .contrast-time {
+    margin-top: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: rgba(250,250,247,0.5);
+    letter-spacing: 0.1em;
+  }
+  .contrast-time .em { color: var(--paper); }
+  .contrast-time-them {
+    margin-top: 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted-2);
+    letter-spacing: 0.06em;
+  }
+  .contrast-time-them .em-dark { color: var(--ink); }
+</style>
